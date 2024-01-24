@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      /* Custom styling for the navbar */
+      .navbar-custom {
+        background-color: #99d1ff; /* Light orange background color */
+      }
+      a {
+        color: black;
+        text-decoration: none;
+      }
+      .navbar-custom .navbar-brand {
+        color: #000000; /* Black color for brand */
+      }
+
+      .navbar-custom .navbar-nav .nav-link {
+        color: #000000 !important; /* Black color for links */
+        margin-right: 10px; /* Add space between buttons */
+      }
+
+      .navbar-custom .logout-btn {
+        background-color: #ff0000; /* Red color for logout button */
+        color: #ffffff !important; /* White text for logout button */
+      }
+
+      .navbar-custom .navbar-nav {
+        margin: auto; /* Center the navbar */
+      }
+      button {
+        text-decoration: none;
+        margin-right: 20px;
+        margin-left: 30px;
+      }
+      .navbar-brand {
+        text-transform: uppercase;
+      }
+      .card img {
+        height: 200px;
+      }
+      .card {
+        width: 28rem;
+        margin: 20px;
+        height: 600px;
+        overflow: scroll;
+      }
+
+      .card-img-top {
+        object-fit: contain;
+        height: 150px;
+      }
+      span {
+        font-weight: 400;
+      }
+
+      .card-body {
+        background-color: #f0f0f0; /* Grey background color */
+      }
+      .allCards {
+        display: flex;
+        width: 80%;
+        justify-content: start;
+        align-items: center;
+      }
+    </style>
+    <title>Profile</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+      <a class="navbar-brand" href="#">hello <%= user.username%> </a>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+         <li class="nav-item">
+            <button
+              class="btn btn-outline-secondary my-2 my-sm-0"
+              type="submit"
+            >
+              <a href="/">Home</a>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="btn btn-outline-secondary my-2 my-sm-0"
+              type="submit"
+            >
+              <a href="/profile">Your Projects</a>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="btn btn-outline-secondary my-2 my-sm-0"
+              type="submit"
+            >
+              <a href="/addProject">Add Project</a>
+            </button>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <button
+            class="btn btn-outline-danger my-2 my-sm-0 logout-btn"
+            type="submit"
+          >
+            <a href="/logout">Logout</a>
+          </button>
+        </form>
+      </div>
+    </nav>
+    <!-- body -->
+    <div class="allCards">
+      <% user.projects.forEach(function(elem) { %>
+      <div class="card">
+        <img class="card-img-top" src="/images/uploads/<%= elem.file %>" />
+
+        <div class="card-body">
+         
+            <p>Project Title:</p>
+            <h4><%= elem.projectName %></h4>
+        
+          <p class="card-text">
+            <p>Project description:</p> <h4><%= elem.description %></h4>
+          </p>
+          <p class="card-text"><strong>URL:</strong> <%= elem.hostedUrl %></p>
+          <p class="card-text"><strong>Date:</strong> <%= elem.date %></p>
+          <p class="card-text"><strong>Time:</strong> <%= elem.timestamp %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+   
+  </body>
+</html>

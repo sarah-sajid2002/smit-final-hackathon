@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body{
+        background: #d1e0ff;
+      }
+    nav{
+      display: flex;
+      justify-content: space-around;
+      height: 100px;
+      width: 100%;
+      align-items: center;
+      background-color: #b6acff;
+    }
+    nav ul{
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      list-style-type: none;
+    }
+     nav ul li a{
+      text-decoration: none;
+      color: black;
+      background-color: rgb(102, 0, 255);
+      padding: 10px;
+      border-radius: 10px;
+      border: 2px solid rgb(97, 93, 93);
+     }
+     nav ul li a:hover{
+      color: blue;
+      background-color: rgb(233, 186, 32);
+
+     }
+    nav ul li{
+      text-transform: uppercase;
+    }
+      .info{
+        height: 500px;
+        background-color: #9ba7ff; /* Grey background color */
+      }
+      #check{
+
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgb(125, 56, 255);
+        width: 150px;
+        margin-top: 10px;
+      }
+      #check:hover{
+        background-color: #ffd09b;
+      }
+      button {
+        text-decoration: none;
+        margin-right: 20px;
+        margin-left: 30px;
+      }
+      .navbar-brand {
+        text-transform: uppercase;
+      }
+      .card img {
+        margin-top: 10px;
+        width: 100%;
+        height: 100px;
+      }
+      .card {
+        width:28rem;
+        margin: 20px;
+        height: 600px;
+        border: 2px solid black;
+      
+      }
+      nav ul li:nth-child(1){
+        margin-top: 20px;
+      }
+
+      .card-img-top {
+        object-fit: contain;
+        height: 150px;
+      }
+      span {
+        font-weight: 400;
+      }
+
+      .card-body {
+        background-color: #9ba7ff; /* Grey background color */
+      }
+      .allCards {
+        display: flex;
+        width: 80%;
+        justify-content: start;
+        align-items: center;
+      }
+       nav{
+        display: flex;
+        justify-content: start;
+      }
+    </style>
+    <title>Hone</title>
+  </head>
+  <body>
+   <nav>
+    <ul>
+      <li><h4>HOME PAGE | project submission website</h4></li>
+       <a href="/login"><button id="check">Login</button></a>
+        <a href="/signup"><button id="check">Signup</button></a>
+    </ul>
+   </nav>
+
+    <!-- body -->
+    <div class="allCards">
+  <% user.forEach(function(elem) { %>
+    <% if (elem.projects.length > 0) { %>
+      <% elem.projects.forEach(function(entry) { %>
+        <div class="card">
+          <div class="info">
+          <img class="card-img-top" src="/images/uploads/<%= entry.file %>" />
+
+          <div class="card-body">
+            <p>By: <span> <%= elem.username%></span></p>
+            <h4><%= entry.projectName %></h4>
+
+            <p class="card-text">
+              <p>Project description:</p> <h4><%= entry.description %></h4>
+            </p>
+            <p class="card-text"><strong>Date:</strong> <%= entry.date %></p>
+            <p class="card-text"><strong>Time:</strong> <%= entry.timestamp %></p>
+            </div>
+          </div>
+            <a target="_blank" href="<%= entry.hostedUrl %> "><button id="check">check</button></a>
+        </div>
+      <% }) %>
+    <% } %>
+  <% }) %>
+</div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    
+</html>

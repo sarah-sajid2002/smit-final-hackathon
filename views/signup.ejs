@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      a {
+        text-decoration: none;
+        font-size: 30px;
+      }
+      .signup-form {
+        max-width: 400px;
+        margin: 50px auto;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .signup-form h2 {
+        text-align: center;
+        color: #ff6600;
+      }
+
+      .signup-form label {
+        color: #495057;
+      }
+
+      .signup-form .btn-orange {
+        background-color: #ff6600;
+        color: #ffffff;
+        transition: background-color 0.3s ease;
+      }
+
+      .signup-form .btn-orange:hover {
+        background-color: #cc4d00;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="signup-form">
+        <h2>Signup</h2>
+        <form action="/register" method="post">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              name="username"
+              placeholder="Enter your first name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              name="lastName"
+              placeholder="Enter your last name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-orange btn-block">
+            Sign Up
+          </button>
+          <p>already have account? <a href="/login">Login</a></p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

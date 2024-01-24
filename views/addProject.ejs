@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #9ecbff; /* Light orange background color */
+        height: 100vh;
+      }
+
+      .form-container {
+        margin: auto;
+        width: 50%;
+        padding: 20px;
+        margin-top: 50px;
+        background-color: rgb(92, 195, 255); /* Light orange background color */
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      .form-container label {
+        color: #000000; /* White text for labels */
+      }
+
+      .form-container input,
+      .form-container textarea {
+        width: 100%;
+        background-color: #ffffff; /* White background for input fields */
+        color: #000000; /* Black text for input fields */
+      }
+
+      button {
+        background-color: #0c2fc9; /* Medium orange submit button color */
+        color: #ffffff; /* White text for submit button */
+        width: 400px;
+        display: block;
+        margin: auto;
+        height: 40px;
+        text-transform: uppercase;
+        border-radius: 30px;
+      }
+      button:hover {
+        background-color: rgb(15, 156, 178);
+      }
+      .oops,
+      .alert {
+        color: red;
+      }
+    </style>
+    <title>Project Form</title>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg navbar-light navbar-custom"
+      style="background-color: #b7daff; padding: 4 0px"
+    >
+      <a class="navbar-brand" href="#">hello <%= user.username %></a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <button
+              style="width: 100px; margin-left: 30px; margin-right: 30px"
+              class="btn btn-outline-secondary my-9px my-sm-0"
+              type="submit"
+            >
+              <a href="/" style="margin-right: 10px">Home</a>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              style="width: 200px; margin-left: 30px; margin-right: 30px"
+              class="btn btn-outline-secondary my-2 my-sm-0"
+              type="submit"
+            >
+              <a href="/profile" style="margin-right: 10px">Your Projects</a>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              style="width: 150px; margin-left: 30px; margin-right: 30px"
+              class="btn btn-outline-secondary my-2 my-sm-0"
+              type="submit"
+            >
+              <a href="/addProject" style="margin-right: 10px">Add Project</a>
+            </button>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <button
+            class="btn btn-outline-danger my-2 my-sm-0 logout-btn"
+            type="submit"
+          >
+            <a
+              style="width: 100px; margin-left: 30px; margin-right: 30px"
+              href="/logout"
+              >Logout</a
+            >
+          </button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 form-container">
+          <form
+            action="/addProject"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <div class="form-group">
+              <% if (typeof error !== 'undefined' && error !== null && error !==
+              "") { %>
+              <h3 class="oops">OOPS</h3>
+              <div class="alert alert-error"><%= error %></div>
+              <% } %>
+              <h1>Project Submission Form</h1>
+              <label for="projectName">Project Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="projectName"
+                name="projectName"
+                placeholder="Enter project name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="description">Description (min. 20 characters)</label>
+              <textarea
+                class="form-control"
+                type="text"
+                name="description"
+                id="description"
+                rows="4"
+                placeholder="Enter project description"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="hostedUrl">Hosted URL</label>
+              <input
+                type="text"
+                name="hostedUrl"
+                class="form-control"
+                id="hostedUrl"
+                placeholder="Enter hosted URL"
+              />
+            </div>
+            <div class="form-group">
+              <label for="hostedUrl">Project Image</label>
+              <input
+                type="file"
+                name="file"
+                class="form-control"
+                id="hostedUrl"
+                placeholder="Enter hosted URL"
+              />
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
